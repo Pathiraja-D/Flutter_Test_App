@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:newapp/components/app_bar.dart';
 import 'package:newapp/components/post_item.dart';
+import 'package:newapp/config/app_routes.dart';
 
 class HomePage extends StatelessWidget {
   HomePage({super.key});
@@ -16,11 +16,12 @@ class HomePage extends StatelessWidget {
         title: 'Flutter App',
         actions: [
           IconButton(
-              onPressed: () {},
-              icon: SvgPicture.asset(
-                'assets/svg/alarm.svg',
-                height: 20,
-                width: 20,
+              onPressed: () {
+                Navigator.of(context).pushNamed(AppRoutes.nearbyPage);
+              },
+              icon: Icon(
+                Icons.location_pin,
+                color: Colors.white,
               ))
         ],
       ),
