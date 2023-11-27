@@ -2,11 +2,14 @@ import 'package:flutter/material.dart';
 
 class AppTextField extends StatelessWidget {
   final String hint;
-  const AppTextField({super.key, required this.hint});
+  final controllerName;
+  const AppTextField(
+      {super.key, required this.hint, required this.controllerName});
 
   @override
   Widget build(BuildContext context) {
     return TextField(
+      controller: controllerName,
       decoration: InputDecoration(
           hintText: hint,
           labelText: hint,
