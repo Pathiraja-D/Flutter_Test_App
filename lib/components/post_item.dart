@@ -19,7 +19,7 @@ class PostItem extends StatelessWidget {
                 width: 80,
                 height: 80,
               ),
-              SizedBox(
+              const SizedBox(
                 width: 16,
               ),
               Text(
@@ -28,14 +28,14 @@ class PostItem extends StatelessWidget {
               ),
             ],
           ),
-          SizedBox(
+          const SizedBox(
             height: 15,
           ),
           Image.asset('assets/temp/temp1.png'),
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
-          Text('The sun is shinnig. I love to go beach.', style: AppText.body1),
+          const Text('The sun is shinnig. I love to go beach.', style: AppText.body1),
         ],
       ),
     );

@@ -17,7 +17,7 @@ class _TestPageState extends State<TestPage> {
       body: Center(
         child: Text(
           'This is counter: $count',
-          style: TextStyle(color: Colors.white, fontSize: 40),
+          style: const TextStyle(color: Colors.white, fontSize: 40),
         ),
       ),
       floatingActionButton: FloatingActionButton(
@@ -26,7 +26,7 @@ class _TestPageState extends State<TestPage> {
             count++;
           });
         },
-        child: Icon(Icons.add),
+        child: const Icon(Icons.add),
       ),
     );
   }

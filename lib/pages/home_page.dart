@@ -19,7 +19,7 @@ class HomePage extends StatelessWidget {
               onPressed: () {
                 Navigator.of(context).pushNamed(AppRoutes.nearbyPage);
               },
-              icon: Icon(
+              icon: const Icon(
                 Icons.location_pin,
                 color: Colors.white,
               ))
@@ -33,7 +33,7 @@ class HomePage extends StatelessWidget {
         },
         itemCount: users.length,
         separatorBuilder: (BuildContext context, int index) {
-          return SizedBox(
+          return const SizedBox(
             height: 24,
           );
         },

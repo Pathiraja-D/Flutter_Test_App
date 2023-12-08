@@ -6,12 +6,12 @@ import 'package:newapp/config/app_icons.dart';
 import 'package:http/http.dart' as http;
 import 'package:newapp/config/app_routes.dart';
 
-const baseUrl = 'http://localhost:8080';
+const baseUrl = 'https://travel-journal-client.onrender.com';
 
 class LoginPage extends StatelessWidget {
-  final loginRoute = '$baseUrl/login';
+  final loginRoute = '$baseUrl/api/users/';
   final usernameController = TextEditingController();
-  final passwordController = TextEditingController();
+  final emailController = TextEditingController();
   LoginPage({super.key});
 
   @override
@@ -22,10 +22,10 @@ class LoginPage extends StatelessWidget {
           height: MediaQuery.of(context).size.height,
           width: MediaQuery.of(context).size.width,
           child: Padding(
-            padding: EdgeInsets.all(24),
+            padding: const EdgeInsets.all(24),
             child: Column(
               children: [
-                Spacer(),
+                const Spacer(),
                 const Text(
                   "Hello, welcome back !",
                   style: TextStyle(
@@ -44,7 +44,7 @@ class LoginPage extends StatelessWidget {
                     fontSize: 14,
                   ),
                 ),
-                Spacer(),
+                const Spacer(),
                 AppTextField(
                   hint: "Username",
                   controllerName: usernameController,
@@ -54,7 +54,7 @@ class LoginPage extends StatelessWidget {
                 ),
                 AppTextField(
                   hint: "Password",
-                  controllerName: passwordController,
+                  controllerName: emailController,
                 ),
                 Align(
                   alignment: Alignment.centerRight,
@@ -67,14 +67,14 @@ class LoginPage extends StatelessWidget {
                       },
                       child: const Text("Forgot Password ?")),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 24,
                 ),
                 SizedBox(
                   width: 250,
                   child: ElevatedButton(
                       onPressed: () {
-                        Navigator.of(context).pushNamed(AppRoutes.main);
+                        Navigator.of(context).pushNamed(AppRoutes.home);
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.amber,
@@ -82,7 +82,7 @@ class LoginPage extends StatelessWidget {
                       ),
                       child: const Text("Login")),
                 ),
-                Spacer(),
+                const Spacer(),
                 const Text(
                   "Or sign in with",
                   style: TextStyle(
@@ -100,7 +100,7 @@ class LoginPage extends StatelessWidget {
                       style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.white,
                           foregroundColor: Colors.black,
-                          shape: RoundedRectangleBorder(
+                          shape: const RoundedRectangleBorder(
                             borderRadius: BorderRadius.all(Radius.circular(52)),
                           )),
                       child: Row(
@@ -114,11 +114,11 @@ class LoginPage extends StatelessWidget {
                           const SizedBox(
                             width: 8,
                           ),
-                          Text(" Login with Google"),
+                          const Text(" Login with Google"),
                         ],
                       )),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 SizedBox(
@@ -130,7 +130,7 @@ class LoginPage extends StatelessWidget {
                       style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.white,
                           foregroundColor: Colors.black,
-                          shape: RoundedRectangleBorder(
+                          shape: const RoundedRectangleBorder(
                               borderRadius:
                                   BorderRadius.all(Radius.circular(52)))),
                       child: Row(
@@ -144,13 +144,13 @@ class LoginPage extends StatelessWidget {
                           const SizedBox(
                             width: 8,
                           ),
-                          Text(" Login with Facebook"),
+                          const Text(" Login with Facebook"),
                         ],
                       )),
                 ),
                 Row(
                   children: [
-                    Text(
+                    const Text(
                       "Don't have account ?",
                       style: TextStyle(
                         color: Colors.white,
@@ -161,16 +161,16 @@ class LoginPage extends StatelessWidget {
                         style: TextButton.styleFrom(
                           foregroundColor: Colors.blue[100],
                         ),
-                        child: Text(
+                        child: const Text(
                           "Sign up",
                           style: TextStyle(
                             decoration: TextDecoration.underline,
                           ),
                         )),
-                    Spacer(),
+                    const Spacer(),
                   ],
                 ),
-                Spacer(),
+                const Spacer(),
               ],
             ),
           ),
@@ -181,8 +181,8 @@ class LoginPage extends StatelessWidget {
 
   Future<String> doLogin() async {
     final username = usernameController.text;
-    final password = passwordController.text;
-    final body = {'username': username, 'password': password};
+    final email = emailController.text;
+    final body = {'userName': username, 'email': email};
     final response =
         await http.post(Uri.parse(loginRoute), body: jsonEncode(body));
     if (response.statusCode == 200) {

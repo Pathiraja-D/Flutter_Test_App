@@ -83,16 +83,16 @@ class _MainPageState extends State<MainPage> {
 
   final pages = [
     HomePage(),
-    Center(
+    const Center(
       child: Text('Favourite'),
     ),
-    Center(
+    const Center(
       child: Text('Add Post'),
     ),
-    Center(
+    const Center(
       child: Text('Messages'),
     ),
-    ProfilePage(),
+    const ProfilePage(),
   ];
 }
 
@@ -117,7 +117,7 @@ class MyButtonNavigation extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 85,
-      margin: EdgeInsets.all(24),
+      margin: const EdgeInsets.all(24),
       child: Stack(
         children: [
           Positioned(
@@ -126,7 +126,7 @@ class MyButtonNavigation extends StatelessWidget {
             top: 17,
             child: Container(
               height: 70,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.all(Radius.circular(25))),
               child: Row(children: [
@@ -142,7 +142,7 @@ class MyButtonNavigation extends StatelessWidget {
                         icon: AppImages.ic_favourite,
                         currentItem: currentIndex,
                         name: Menus.favourite)),
-                Spacer(),
+                const Spacer(),
                 Expanded(
                     child: ButtonNavigationItem(
                         onPressed: () => onTap(Menus.message),
@@ -165,10 +165,10 @@ class MyButtonNavigation extends StatelessWidget {
             child: GestureDetector(
               onTap: () => onTap(Menus.add),
               child: Container(
-                padding: EdgeInsets.all(16),
+                padding: const EdgeInsets.all(16),
                 width: 64,
                 height: 64,
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   color: Colors.amber,
                   shape: BoxShape.circle,
                 ),

@@ -13,7 +13,7 @@ enum Gender {
 }
 
 class EditProfile extends StatefulWidget {
-  EditProfile({super.key});
+  const EditProfile({super.key});
 
   @override
   State<EditProfile> createState() => _EditProfileState();
@@ -30,15 +30,15 @@ class _EditProfileState extends State<EditProfile> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: ToolBar(title: 'Edit Profile'),
+      appBar: const ToolBar(title: 'Edit Profile'),
       body: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.all(20.0),
+          padding: const EdgeInsets.all(20.0),
           child: Column(children: [
             Stack(
               children: [
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
+                const Padding(
+                  padding: EdgeInsets.all(8.0),
                   child: UserAvatar(size: 120),
                 ),
                 Positioned(
@@ -46,59 +46,59 @@ class _EditProfileState extends State<EditProfile> {
                     right: 0,
                     child: Container(
                         padding: const EdgeInsets.all(3),
-                        decoration: BoxDecoration(
+                        decoration: const BoxDecoration(
                             color: AppColors.primary,
                             borderRadius: BorderRadius.all(Radius.circular(6))),
-                        child: Icon(
+                        child: const Icon(
                           Icons.edit,
                           size: 20,
                           color: Colors.black,
                         ))),
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 50,
             ),
             AppTextField(
               hint: 'First Name',
               controllerName: firstnameController,
             ),
-            SizedBox(
+            const SizedBox(
               height: 16,
             ),
             AppTextField(
               hint: 'Last Name',
               controllerName: lastnameController,
             ),
-            SizedBox(
+            const SizedBox(
               height: 16,
             ),
             AppTextField(
               hint: 'Phone Number',
               controllerName: phoneController,
             ),
-            SizedBox(
+            const SizedBox(
               height: 16,
             ),
             AppTextField(
               hint: 'Location',
               controllerName: locationController,
             ),
-            SizedBox(
+            const SizedBox(
               height: 16,
             ),
             AppTextField(
               hint: 'BirthDay',
               controllerName: birthdayController,
             ),
-            SizedBox(
+            const SizedBox(
               height: 16,
             ),
             Container(
               padding: const EdgeInsets.only(left: 12, right: 12, top: 6),
               decoration: BoxDecoration(
                   color: AppColors.white,
-                  borderRadius: BorderRadius.all(Radius.circular(12))),
+                  borderRadius: const BorderRadius.all(Radius.circular(12))),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -112,9 +112,9 @@ class _EditProfileState extends State<EditProfile> {
                     children: [
                       Expanded(
                         child: RadioListTile(
-                            title: Text('Male'),
+                            title: const Text('Male'),
                             value: Gender.male,
-                            visualDensity: VisualDensity(
+                            visualDensity: const VisualDensity(
                                 horizontal: VisualDensity.minimumDensity,
                                 vertical: VisualDensity.minimumDensity),
                             contentPadding: EdgeInsets.zero,
@@ -127,9 +127,9 @@ class _EditProfileState extends State<EditProfile> {
                       ),
                       Expanded(
                         child: RadioListTile(
-                            title: Text("Female"),
+                            title: const Text("Female"),
                             value: Gender.female,
-                            visualDensity: VisualDensity(
+                            visualDensity: const VisualDensity(
                                 horizontal: VisualDensity.minimumDensity,
                                 vertical: VisualDensity.minimumDensity),
                             contentPadding: EdgeInsets.zero,
@@ -142,9 +142,9 @@ class _EditProfileState extends State<EditProfile> {
                       ),
                       Expanded(
                         child: RadioListTile(
-                            title: Text("Other"),
+                            title: const Text("Other"),
                             value: Gender.other,
-                            visualDensity: VisualDensity(
+                            visualDensity: const VisualDensity(
                                 horizontal: VisualDensity.minimumDensity,
                                 vertical: VisualDensity.minimumDensity),
                             contentPadding: EdgeInsets.zero,

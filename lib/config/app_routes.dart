@@ -8,9 +8,9 @@ class AppRoutes {
   static final pages = {
     login: (context) => LoginPage(),
     home: (context) => HomePage(),
-    main: (context) => MainPage(),
-    editProfile: (context) => EditProfile(),
-    nearbyPage: (context) => NearbyPage(),
+    main: (context) => const MainPage(),
+    editProfile: (context) => const EditProfile(),
+    nearbyPage: (context) => const NearbyPage(),
   };
 
   static const login = '/';

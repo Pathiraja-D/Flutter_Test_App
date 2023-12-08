@@ -26,27 +26,27 @@ class ProfilePage extends StatelessWidget {
             }
           }, itemBuilder: (context) {
             return [
-              PopupMenuItem(
+              const PopupMenuItem(
+                value: ProfileMenu.edit,
                 child: Row(
                   children: [
                     Icon(Icons.edit),
                   ],
                 ),
-                value: ProfileMenu.edit,
               ),
-              PopupMenuItem(
+              const PopupMenuItem(
+                value: ProfileMenu.logout,
                 child: Row(
                   children: [
                     Icon(Icons.logout),
                   ],
                 ),
-                value: ProfileMenu.logout,
               ),
             ];
           })
         ],
       ),
-      body: Column(
+      body: const Column(
         children: [
           UserAvatar(size: 120),
           SizedBox(

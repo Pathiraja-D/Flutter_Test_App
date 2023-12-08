@@ -9,16 +9,16 @@ class NearbyPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: ToolBar(title: 'NearBy'),
+        appBar: const ToolBar(title: 'NearBy'),
         body: FlutterMap(
-          options: MapOptions(
+          options: const MapOptions(
               initialCenter: LatLng(7.8774, 80.7003), initialZoom: 10),
           children: [
             TileLayer(
               urlTemplate: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
               userAgentPackageName: 'dev.ces.flutter',
             ),
-            MarkerLayer(
+            const MarkerLayer(
               markers: [
                 Marker(
                     height: 80,
