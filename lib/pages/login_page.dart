@@ -1,20 +1,20 @@
-import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:newapp/components/app_text_field.dart';
 import 'package:newapp/config/app_icons.dart';
-//import 'package:newapp/config/app_routes.dart';
-import 'package:http/http.dart' as http;
-import 'package:newapp/config/app_routes.dart';
+import 'package:newapp/services/user.services.dart';
 
-const baseUrl = 'https://travel-journal-client.onrender.com';
-
-class LoginPage extends StatelessWidget {
-  final loginRoute = '$baseUrl/api/users/';
-  final usernameController = TextEditingController();
-  final emailController = TextEditingController();
+class LoginPage extends StatefulWidget {
   LoginPage({super.key});
 
   @override
+  State<LoginPage> createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
+  final usernameController = TextEditingController();
+
+  final emailController = TextEditingController();
+
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
@@ -74,7 +74,7 @@ class LoginPage extends StatelessWidget {
                   width: 250,
                   child: ElevatedButton(
                       onPressed: () {
-                        Navigator.of(context).pushNamed(AppRoutes.home);
+                        doRegister();
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.amber,
@@ -177,19 +177,5 @@ class LoginPage extends StatelessWidget {
         ),
       ),
     );
-  }
-
-  Future<String> doLogin() async {
-    final username = usernameController.text;
-    final email = emailController.text;
-    final body = {'userName': username, 'email': email};
-    final response =
-        await http.post(Uri.parse(loginRoute), body: jsonEncode(body));
-    if (response.statusCode == 200) {
-      return response.body;
-    } else {
-      print("Error");
-      throw Exception('Error');
-    }
   }
 }

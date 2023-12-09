@@ -8,8 +8,10 @@ class AppTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    FocusNode? focusNode;
     return TextField(
       controller: controllerName,
+      focusNode: focusNode,
       decoration: InputDecoration(
           hintText: hint,
           labelText: hint,

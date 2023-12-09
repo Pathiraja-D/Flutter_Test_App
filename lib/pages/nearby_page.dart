@@ -12,7 +12,7 @@ class NearbyPage extends StatelessWidget {
         appBar: const ToolBar(title: 'NearBy'),
         body: FlutterMap(
           options: const MapOptions(
-              initialCenter: LatLng(7.8774, 80.7003), initialZoom: 10),
+              initialCenter: LatLng(7.8774, 80.7003), initialZoom: 50),
           children: [
             TileLayer(
               urlTemplate: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
