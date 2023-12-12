@@ -1,6 +1,10 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:newapp/components/app_text_field.dart';
 import 'package:newapp/config/app_icons.dart';
+import 'package:newapp/config/app_routes.dart';
+import 'package:newapp/database.dart';
 import 'package:newapp/services/user.services.dart';
 
 class LoginPage extends StatefulWidget {
@@ -11,10 +15,22 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  final FirebaseAuth _auth = FirebaseAuth.instance;
   final usernameController = TextEditingController();
-
   final emailController = TextEditingController();
+  User? _user;
 
+  @override
+  void initState() {
+    super.initState();
+    _auth.authStateChanges().listen((event) {
+      setState(() {
+        _user = event;
+      });
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
@@ -74,7 +90,7 @@ class _LoginPageState extends State<LoginPage> {
                   width: 250,
                   child: ElevatedButton(
                       onPressed: () {
-                        doRegister();
+                        uploadData();
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.amber,
@@ -95,7 +111,7 @@ class _LoginPageState extends State<LoginPage> {
                   height: 48,
                   child: ElevatedButton(
                       onPressed: () {
-                        print("Google is clicked");
+                        _handleGoogleSignIn();
                       },
                       style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.white,
@@ -177,5 +193,36 @@ class _LoginPageState extends State<LoginPage> {
         ),
       ),
     );
+  }
+
+  void _handleGoogleSignIn() {
+    try {
+      GoogleAuthProvider _googleAuthProvider = GoogleAuthProvider();
+      _auth.signInWithProvider(_googleAuthProvider);
+      if (_user != null) {
+        Navigator.of(context).pushNamed(AppRoutes.home);
+      } else
+        (e) {
+          print(e);
+        };
+    } catch (e) {
+      print(e);
+    }
+  }
+
+  uploadData() async {
+    Map<String, dynamic> uploaddata = {
+      "email": emailController.text,
+      "username": usernameController.text,
+    };
+    await DatabaseMethods().addUserDetails(uploaddata);
+    Fluttertoast.showToast(
+        msg: "Data Uploaded Successfully",
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.CENTER,
+        timeInSecForIosWeb: 1,
+        backgroundColor: Colors.red,
+        textColor: Colors.white,
+        fontSize: 16.0);
   }
 }
