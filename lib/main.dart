@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
           fontFamily: 'Urbanist',
           scaffoldBackgroundColor: AppColors.background,
           brightness: Brightness.dark),
-      initialRoute: AppRoutes.login,
+      initialRoute: AppRoutes.test,
       routes: AppRoutes.pages,
     );
   }

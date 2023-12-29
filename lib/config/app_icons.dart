@@ -13,4 +13,6 @@ class AppImages {
   static const ic_favourite = '${_svg}favourite.svg';
   static const ic_messages = '${_svg}message.svg';
   static const ic_user = '${_svg}user.svg';
+
+  static const testback = '${_png}testpage.png';
 }

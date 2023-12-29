@@ -1,14 +1,12 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:newapp/components/app_text_field.dart';
 import 'package:newapp/config/app_icons.dart';
 import 'package:newapp/config/app_routes.dart';
 import 'package:newapp/database.dart';
-import 'package:newapp/services/user.services.dart';
 
 class LoginPage extends StatefulWidget {
-  LoginPage({super.key});
+  const LoginPage({super.key});
 
   @override
   State<LoginPage> createState() => _LoginPageState();
@@ -197,14 +195,15 @@ class _LoginPageState extends State<LoginPage> {
 
   void _handleGoogleSignIn() {
     try {
-      GoogleAuthProvider _googleAuthProvider = GoogleAuthProvider();
-      _auth.signInWithProvider(_googleAuthProvider);
+      GoogleAuthProvider googleAuthProvider = GoogleAuthProvider();
+      _auth.signInWithProvider(googleAuthProvider);
       if (_user != null) {
         Navigator.of(context).pushNamed(AppRoutes.home);
-      } else
+      } else {
         (e) {
           print(e);
         };
+      }
     } catch (e) {
       print(e);
     }
@@ -216,13 +215,6 @@ class _LoginPageState extends State<LoginPage> {
       "username": usernameController.text,
     };
     await DatabaseMethods().addUserDetails(uploaddata);
-    Fluttertoast.showToast(
-        msg: "Data Uploaded Successfully",
-        toastLength: Toast.LENGTH_SHORT,
-        gravity: ToastGravity.CENTER,
-        timeInSecForIosWeb: 1,
-        backgroundColor: Colors.red,
-        textColor: Colors.white,
-        fontSize: 16.0);
+    
   }
 }
