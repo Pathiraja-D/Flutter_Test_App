@@ -12,7 +12,7 @@ class AppRoutes {
     main: (context) => const MainPage(),
     editProfile: (context) => const EditProfile(),
     nearbyPage: (context) => const NearbyPage(),
-    test : (context) => const TestPage(),
+    test: (context) => const TestPage(),
   };
 
   static const login = '/';
@@ -20,5 +20,5 @@ class AppRoutes {
   static const main = '/main';
   static const editProfile = '/edit_profile';
   static const nearbyPage = '/nearby';
-  static const test = '/test',
+  static const test = '/test';
 }
